@@ -24,7 +24,7 @@ export default {
     setInterval(() => {
       axios.post("http://localhost:9090/video_feed").then((res) => {
         let filteredResponse = res.data.response.filter(item => item.face_image);
-        filteredResponse.forEach(item => this.listMatched.unshift(item));
+        filteredResponse.forEach(item => this.listMatched.unshift({...item, uid: uuid4() }));
       })
     }, 3000)
   },
