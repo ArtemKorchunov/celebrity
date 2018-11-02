@@ -23,9 +23,8 @@ export default {
   created() {
     setInterval(() => {
       axios.post("http://localhost:9090/video_feed").then((res) => {
-        let listSplited = res.data.response.slice(this.listMatched.length);
-        listSplited = listSplited.filter(item => !!item.face_image)
-        listSplited.forEach(item => this.listMatched.unshift(item))
+        let filteredResponse = res.data.response.filter(item => item.face_image);
+        filteredResponse.forEach(item => this.listMatched.unshift(item));
       })
     }, 3000)
   },

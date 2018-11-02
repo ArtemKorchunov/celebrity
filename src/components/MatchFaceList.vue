@@ -1,7 +1,7 @@
 <template>
     <div class="face-recognit-wrap">
         <ul v-show="list.length" class="face-recognit-list" ref="resultList">
-            <li class="list-element" v-for="(item, key) in list" :key="item.id" data-aos="fade-down" data-aos-anchor-placement="top-center">
+            <li class="list-element" v-for="(item, key) in list" :key="item.id" >
                 <div class="face-result-wrap">
                     <div class="element">
                         <img :src="getUserLink(item.face_image)" class="photo" alt="">
@@ -61,6 +61,6 @@ export default {
 }
 .photo {
     width: 100%;
-    max-width: 100px;
+    max-width: 265px;
 }
 </style>
