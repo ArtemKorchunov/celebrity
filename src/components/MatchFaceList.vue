@@ -61,6 +61,6 @@ export default {
 }
 .photo {
     width: 100%;
-    max-width: 200px;
+    max-width: 100px;
 }
 </style>
