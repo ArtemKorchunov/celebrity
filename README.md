@@ -1,26 +1,14 @@
-# celebrity-ident
+# Celebrity-ident
 
 ## Project setup
 ```
-yarn install
-```
+npm install
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
+npm run build
 
-### Compiles and minifies for production
-```
-yarn run build
-```
+cd server
 
-### Run your tests
-```
-yarn run test
-```
+npm install
 
-### Lints and fixes files
-```
-yarn run lint
+node server
 ```
