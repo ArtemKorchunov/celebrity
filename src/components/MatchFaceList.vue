@@ -1,16 +1,16 @@
 <template>
     <div class="face-recognit-wrap">
         <ul v-show="list.length" class="face-recognit-list" ref="resultList">
-            <li class="list-element" v-for="item in list" :key="item.id" data-aos="fade-down" data-aos-anchor-placement="top-center">
+            <li class="list-element" v-for="(item, key) in list" :key="item.id" data-aos="fade-down" data-aos-anchor-placement="top-center">
                 <div class="face-result-wrap">
                     <div class="element">
-                        <img :src="item.user" class="photo" alt="">
+                        <img :src="getUserLink(item.face_image)" class="photo" alt="">
                     </div>
                     <div class="element">
                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M8.122 24l-4.122-4 8-8-8-8 4.122-4 11.878 12z"/></svg>
                     </div>
                     <div class="element">
-                        <img :src="item.match" class="photo" alt="">
+                        <img :src="item.image_link" class="photo" alt="">
                     </div>
                 </div>
             </li>
@@ -33,6 +33,11 @@ export default {
             }
         }
     },
+    methods: {
+        getUserLink(val) {
+            return require(`../${val.split('/')[1]}`);
+        }
+    }
 }
 </script>
 <style scoped>

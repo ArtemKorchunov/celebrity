@@ -8,11 +8,11 @@
 </template>
 
 <script>
+import axios from 'axios';
 import VideoAnalyzer from './components/VideoAnalyzer';
 import MatchFaceList from './components/MatchFaceList';
 import uuid4 from 'uuid/v4';
 
-import { listMatched } from './mock.js';
 
 export default {
   name: 'app',
@@ -21,11 +21,17 @@ export default {
     VideoAnalyzer
   },
   created() {
-    setInterval(() => this.listMatched.unshift({...this.listMatched[0], id: uuid4() }), 2000);
+    setInterval(() => {
+      axios.post("http://localhost:9090/video_feed").then((res) => {
+        let listSplited = res.data.response.slice(this.listMatched.length);
+        listSplited = listSplited.filter(item => !!item.face_image)
+        listSplited.forEach(item => this.listMatched.push(item))
+      })
+    }, 5000)
   },
   data() {
     return {
-      listMatched
+      listMatched: []
     }
   }
 }

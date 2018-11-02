@@ -1,13 +1,10 @@
 <template>
 
     <div class="left-side-wrap">
-        <video id="videobcg" preload="auto" autoplay="true" loop="loop" :src="src" muted="muted" volume="0">
-        </video>
+        <img id="videobcg" :src="src" alt="">
         <div class="video-wrap">
             <div class="draw-wrap">
-                <canvas id="canvas" preload="auto" :width="videoWidth" :height="videoHeight" ref="canvas"></canvas>
-                <video class="video-recorder" ref="video" @play="processVideo" type="video/mp4" :src="src"  width="100%" height="100%" controls autoplay loop>
-                </video>
+                <img class="video-recorder" :src="src" alt="">
             </div>
         </div>
     </div>
@@ -17,15 +14,16 @@ import { mapGetters, mapActions } from "vuex";
 
 export default {
     name: 'VideoAnalyzer',
+    props: ['videoSrc'],
     data() {
         return {
             videoWidth: 0,
             videoHeight: 0,
-            src: `https://www.radiantmediaplayer.com/media/bbb-360p.mp4`
+            src: `http://localhost:9090/video_feed`
         }
     },
     mounted() {
-        setTimeout(() => this.processVideo(), 2000)
+
     },
     computed: {
         ...mapGetters({ messages: "getMessages" }),
