@@ -4,8 +4,8 @@ const fs = require("fs");
 const path = require("path");
 const app = express();
 const uploadsDir = path.join(__dirname, "..", "dist", "img");
-app.use(express.static(path.join(__dirname, "..", "dist")));
 
+app.use(express.static(path.join(__dirname, "..", "dist")));
 setInterval(
   () =>
     fs.readdir(uploadsDir, function(err, files) {
