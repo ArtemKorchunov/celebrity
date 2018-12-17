@@ -37,7 +37,7 @@ export default {
     },
     methods: {
         getUserLink(val) {
-            return val ? `http://localhost:10010/img/${val.split('/').pop()}`: '';
+            return val ? `/img/${val.split('/').pop()}`: '';
         }
     }
 }
